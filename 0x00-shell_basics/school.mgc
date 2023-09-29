@@ -1,2 +1,2 @@
 #!/bin/bash
-0 string HOLVERTON Holverton data l:mime Holverton
+file -m school.mgc example.dat

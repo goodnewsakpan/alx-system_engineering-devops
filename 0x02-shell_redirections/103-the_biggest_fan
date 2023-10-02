@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n +2 input.txt | cut -f1 | sort | uniq -c | sort -nr | head -11 | tr -s ' ' | cut -d ' ' -f3
+cut -f 1 webserver_logs.tsv | sort | uniq -c | sort -rn | head -n 11

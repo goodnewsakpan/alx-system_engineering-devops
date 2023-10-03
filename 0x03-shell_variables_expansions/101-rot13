@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "hello" | tr a-m,A-M,n-z,N-Z n-z,N-Z,a-m,A-M
+echo "hello" | tr 'a-mA-Mn-zN-Z' 'n-zN-Za-mA-M'

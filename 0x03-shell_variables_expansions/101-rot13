@@ -1,2 +1,2 @@
 #!/bin/bash
-echo | tr 'a-mA-Mn-zN-Z' 'n-zN-Za-m-M'
+tr 'a-mA-Mn-zN-Z' 'n-zN-Za-m-M'

@@ -1,2 +1,2 @@
 #!/bin/bash
-$((base_2 # base_10))
+echo $((base_2 # base_10))

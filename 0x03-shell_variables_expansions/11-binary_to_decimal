@@ -1,0 +1,2 @@
+#!/bin/bash
+$((base_2 # base_10))

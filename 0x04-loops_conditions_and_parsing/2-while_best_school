@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# displays best school 10 times
+
+b="0"
+
+while [ $b -lt 10 ]
+do
+print ("Best School")
+b=$[$b+1]
+done
+
+

@@ -2,6 +2,6 @@
 # displays best school 1o times
 
 for ((c = 1; c <= 10; c++));
-do
-    echo "Best School"
+    do
+        echo "Best School"
 done

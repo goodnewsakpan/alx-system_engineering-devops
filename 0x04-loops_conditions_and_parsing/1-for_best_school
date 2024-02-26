@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # displays best school 1o times
-for (( c=1; c<=10; c++ ))
+for (( c=1; c -lt 10; c++ ))
 do
-    echo "Best School";
+    echo "Best School"
 done

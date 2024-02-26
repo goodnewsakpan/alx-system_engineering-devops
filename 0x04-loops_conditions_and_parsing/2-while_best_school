@@ -6,7 +6,7 @@ b="0"
 while [ $b -lt 10 ]
 do
  echo "Best School"
-b=$(($b+1))
+b=$((b+1))
 done
 
 

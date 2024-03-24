@@ -1,5 +1,5 @@
 # 0x09. Web infrastructure design
-## This entire tasks requires whiteboarding only.
+## This entire task requires whiteboarding only.
 ## General Requirements:
 For each task, once you are done whiteboarding (on a whiteboard, piece of paper or software or your choice), take a picture/screenshot of your diagram
 This project will be manually reviewed:

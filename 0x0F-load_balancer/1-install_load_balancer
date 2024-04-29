@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
-# Update packages
-sudo apt-get -y update
-sudo apt-get upgrade -y
-
-# Add HAProxy PPA
-sudo apt-get install software-properties-common -y
+# Update package index
+sudo apt-get update
 
 # Install HAProxy
-sudo apt-get install haproxy -y
+sudo apt-get install -y haproxy
 
 # Configure HAProxy
 balancer="
@@ -16,19 +12,27 @@ frontend haproxy_balancer
     bind *:80
     mode http
     default_backend webservers
+    timeout client 30s
 
 backend webservers
     mode http
     balance roundrobin
     server 530641-web-01 100.25.3.175:80 check
     server 530641-web-02 54.90.44.227:80 check
+    timeout connect 5s
+    timeout server 30s
 "
 
-# Backup the original configuration file
-sudo cp -a /etc/haproxy/haproxy.cfg{,.orig}
+# Backup the original configuration file with timestamp
+timestamp=$(date +%Y%m%d%H%M%S)
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.$timestamp.backup
+
+# Enable and start HAProxy service
+sudo systemctl enable haproxy
+sudo systemctl start haproxy
 
 # Overwrite the configuration file with the new configuration
 echo "$balancer" | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
 
-# Restart HAProxy service
-sudo service haproxy restart
+# Reload HAProxy service to apply the new configuration
+sudo systemctl reload haproxy

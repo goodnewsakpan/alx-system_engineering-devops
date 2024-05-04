@@ -13,7 +13,7 @@ else
 		for sub in "${subdomains[@]}";
 		do
 			dig_result=$(dig +short "$sub.$domain" | awk '{print $1}')
-			echo "The subdomain $sub is a A record and points to dig_result"
+			echo "The subdomain $sub is a A record and points to $dig_result"
 		done
 fi
 	

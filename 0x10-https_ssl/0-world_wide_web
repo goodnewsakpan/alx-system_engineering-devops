@@ -4,16 +4,20 @@
 domain="$1"
 subdomain="$2"
 
-if [[ -n "$subdomain" ]];
+subdomains=("www" "lb-01" "web-01" "web-02")
 
-	then dig_result=$(dig +short "$subdomain.$subdomain" | awk '{print $1}')
-	echo "The subdomain $subdomain is a A record and points to $dig_result"
+function dns_info ()
+{
+	read -r -a lines < <(dig "$1" | grep -A1 'ANSWER SECTION' | grep "$1" | awk '{print $4, $5}')
+	echo "The subdomain ${2} is a ${lines[0]} record and points to ${lines[1]}"
+}
+
+if [ -z "$2" ];
+then
+	for sub in "${subdomains[@]}";
+	do
+		dns_info "${sub}.${1}" "$sub"
+	done
 else
-	subdomains=("www" "lb-01" "web-01" "web-02")
-		for sub in "${subdomains[@]}";
-		do
-			dig_result=$(dig +short "$sub.$domain" | awk '{print $1}')
-			echo "The subdomain $sub is a A record and points to $dig_result"
-		done
+	dns_info "${2}.${1}" "${2}"
 fi
-	

@@ -2,11 +2,5 @@
 
 #script to run whoami command as a specified user
 
-if [ $# -ne 1 ]; then
-	echo "usage: $0 <username>"
-	exit 1
-
-USERNAME=$1
-
-sudo -u "$USERNAME" whoami
+sudo -u "$1" whoami
 
